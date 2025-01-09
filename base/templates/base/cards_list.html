@@ -1,0 +1,264 @@
+<!-- {% load static %}
+<link rel="stylesheet" href="{% static '../../css/styles.css' %}">
+<h1>My Cards</h1>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" name="Create Cards" value="Create Card">
+</form>
+
+{% for card in cards %}
+    <div>
+        <a href="{% url 'update_card' card.cardID %}">Update</a>
+        <a href="{% url 'delete' card.cardID %}">delete</a>
+        <p>{{card}}</p>
+    </div>
+{% endfor %} -->
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cards</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
+<!--
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f3e4;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 25%;
+    padding: 10px;
+    background-color: #e2f5d5;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #c0e4a5;
+    text-decoration: none;
+    color: #000;
+}
+
+.sidebar a:hover {
+    background-color: #a9d48f;
+}
+
+.main-content {
+    width: 75%;
+    padding: 10px;
+}
+
+.card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.card p {
+    margin: 5px 0;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.add-card-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.add-card-btn button {
+    background-color: #004d40;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-card-btn button:hover {
+    background-color: #00332a;
+}
+
+    </style>
+</head>
+<body>
+    <h1>My Cards</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" name="Create Cards" value="Create Card">
+    </form>
+
+    {% for card in cards %}
+        <div>
+            <a href="{% url 'update_card' card.cardID %}">Update</a>
+            <a href="{% url 'delete' card.cardID %}">delete</a>
+            <p>{{ card }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cards</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f3e4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 25%;
+    padding: 20px;
+    background-color: #e2f5d5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #c0e4a5;
+    text-decoration: none;
+    color: #000;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #a9d48f;
+}
+
+.main-content {
+    width: 75%;
+    padding: 20px;
+}
+
+.card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card p {
+    margin: 0;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.card-actions a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.card-actions a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.add-card-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.add-card-btn button {
+    background-color: #004d40;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-card-btn button:hover {
+    background-color: #00332a;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'image/logo.png' %}" alt="Logo">
+            </div>
+            <a href="#">Home</a>
+            <a href="#">My Cards</a>
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+        </div>
+        <div class="main-content">
+            <h1>My Cards</h1>
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form }}
+                <div class="add-card-btn">
+                    <button type="submit" name="Create Cards">Create Card</button>
+                </div>
+            </form>
+            {% for card in cards %}
+                <div class="card">
+                    <div class="card-actions">
+                        <a href="{% url 'update_card' card.cardID %}">Update</a>
+                        <a href="{% url 'delete' card.cardID %}">Delete</a>
+                    </div>
+                    <p>{{ card }}</p>
+                    <p>{{ card.dateTime }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
